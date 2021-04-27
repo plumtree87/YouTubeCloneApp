@@ -12,7 +12,7 @@ const VideoPlayer = ({ video }) => {
   return (
     <div>
       <div className="ui embed">
-        <iframe src={videoSrc} allowFullScreen title="Video player" />
+        <iframe id="ytplayer" type="text/html" width="640" height="360" src={videoSrc} allowFullScreen title="Video player" />
       </div>
       <div className="ui segment">
         <h4 className="ui header">{video.snippet.title}</h4>
