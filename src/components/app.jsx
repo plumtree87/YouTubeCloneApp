@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios'
+import React, { Component } from 'react';
 import VideoPlayer from './VideoPlayer/videoPlayer';
 
 class App extends Component {
@@ -8,15 +7,15 @@ class App extends Component {
         videos: [],
      }
 
-
-
-
+ 
 
     render() { 
         console.log("this.state", this.state)
+        const key = 'vYU8Zf1Sv7A'
         return (
             <div>
-             <VideoPlayer />
+             <VideoPlayer
+              key={key} />
             </div>
           );
     }
