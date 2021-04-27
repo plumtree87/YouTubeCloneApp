@@ -7,7 +7,7 @@ const videoComments = () => {
         <div>
        <ul className="list">
         {comments.map((comment) => {
-            return 
+            return {comments}
         } )}
        </ul>
         </div>
