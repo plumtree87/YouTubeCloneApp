@@ -10,6 +10,7 @@ const VideoPlayer = ({ video }) => {
   const videoSrc = `https://www.youtube.com/embed/${video.id.videoId}`;
   console.log(typeof video);
   return (
+      <center>
     <div>
       <div className="ui embed">
         <iframe id="ytplayer" type="text/html" width="640" height="360" src={videoSrc} allowFullScreen title="Video player" />
@@ -19,6 +20,8 @@ const VideoPlayer = ({ video }) => {
         <p>{video.snippet.description}</p>
       </div>
     </div>
+    </center>
+    
   );
 };
 
