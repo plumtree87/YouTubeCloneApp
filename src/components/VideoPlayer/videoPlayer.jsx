@@ -3,10 +3,11 @@ import React from "react";
 const VideoPlayer = ({ video }) => {
   if (!video) {
     return <div>
-       <h1>Search by Topic or Keywords.</h1>
+       <h1>Search by topic or keywords</h1>
+
     </div>;
   }
-  console.log('LOOKHERE', video.id.videoId)
+
   const videoSrc = `https://www.youtube.com/embed/${video.id.videoId}`;
   console.log(typeof video);
   return (
