@@ -7,15 +7,17 @@ class App extends Component {
         videos: [],
      }
 
- 
+
+getVideo(){
+    return this.video ='vYU8Zf1Sv7A'
+}
+
 
     render() { 
-        console.log("this.state", this.state)
-        const key = 'vYU8Zf1Sv7A'
+
         return (
             <div>
-             <VideoPlayer
-              key={key} />
+             <VideoPlayer youtube_code = 'vYU8Zf1Sv7A' />
             </div>
           );
     }
