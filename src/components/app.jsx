@@ -3,7 +3,7 @@ import youtube from '../API/youtube';
 import VideoPlayer from './VideoPlayer/videoPlayer';
 import SearchBar from './SearchBar/searchBar';
 import VideoList from './VideoList/ListVideo';
-
+import '../components/app.css'
 
 class App extends Component {
     state = { 
