@@ -10,12 +10,11 @@ class App extends Component {
  
 
     render() { 
-        console.log("this.state", this.state)
-        const key = 'vYU8Zf1Sv7A'
+     
         return (
             <div>
              <VideoPlayer
-              key={key} />
+              key='vYU8Zf1Sv7A' />
             </div>
           );
     }
