@@ -3,6 +3,7 @@ import youtube from '../API/youtube';
 import VideoPlayer from './VideoPlayer/videoPlayer';
 import SearchBar from './SearchBar/searchBar';
 import VideoList from './VideoList/ListVideo';
+import { Container, Col, Row } from 'react-bootstrap';
 import '../components/app.css'
 
 class App extends Component {
@@ -30,11 +31,19 @@ handleVideoSelect = (video) => {
     render() { 
 
         return (
-            <div>
+            <Container>
+               
               <SearchBar handleFormSubmit={this.handleSubmit}/>
+              
+                <Row>
+                    <Col sm ={8}>
               <VideoPlayer video={this.state.selectedVideo}/>
+                    </Col>
+                    <Col sm = {4}>
               <VideoList handleVideoSelect={this.handleVideoSelect} videos={this.state.videos}/>
-            </div>
+                    </Col>
+                </Row>
+            </Container>
           );
     }
 }

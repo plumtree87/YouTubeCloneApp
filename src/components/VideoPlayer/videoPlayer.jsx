@@ -1,8 +1,12 @@
 import React from "react";
+<<<<<<< HEAD
 import card from 'react-bootstrap/card';
 import Accordion from 'react-bootstrap/Accordion'
 import { useAccordionToggle } from 'react-bootstrap/AccordionToggle';
 
+=======
+import { Container } from 'react-bootstrap';
+>>>>>>> 11f25f5f046e36d61ad0bc1cf572e7e4c03d3e45
 const VideoPlayer = ({ video }) => {
   if (!video) {
     return <div>
@@ -15,10 +19,10 @@ const VideoPlayer = ({ video }) => {
   const decoratedOnClick = useAccordionToggle(eventKey, onClick);
   console.log(typeof video);
   return (
-      <center>
+    <Container>
     <div>
       <div>
-        <iframe id="ytplayer" type="text/html" width="640" height="360" src={videoSrc} allowFullScreen title="Video player" />
+        <iframe id="ytplayer" type="text/html" width= "100%" height="360" src={videoSrc} allowFullScreen title="Video player" />
       </div>
       <div>
         <h4 id='selectedVidTitle'>{video.snippet.title}</h4>
@@ -37,7 +41,9 @@ const VideoPlayer = ({ video }) => {
     </div>
        
     </div>
-    </center>
+ 
+    </Container>
+   
     
   );
 };

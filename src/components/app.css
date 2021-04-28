@@ -1,6 +1,6 @@
 div > img {
     height: auto;
-    width: 25%;
+    width: 100%;
 }
 
 #vidinfo {
@@ -8,7 +8,7 @@ div > img {
 }
 
 div.content {
-    width: 25%
+    width: 100%
 }
 
 #selectedVidDesc {
@@ -18,5 +18,8 @@ div.content {
 #selectedVidTitle {
     width: 100%
 }
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 11f25f5f046e36d61ad0bc1cf572e7e4c03d3e45
