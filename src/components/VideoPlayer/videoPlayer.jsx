@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Container } from 'react-bootstrap';
 const VideoPlayer = ({ video }) => {
   if (!video) {
     return <div>
@@ -11,17 +11,19 @@ const VideoPlayer = ({ video }) => {
   const videoSrc = `https://www.youtube.com/embed/${video.id.videoId}`;
   console.log(typeof video);
   return (
-      <center>
+    <Container>
     <div>
       <div>
-        <iframe id="ytplayer" type="text/html" width="640" height="360" src={videoSrc} allowFullScreen title="Video player" />
+        <iframe id="ytplayer" type="text/html" width= "100%" height="360" src={videoSrc} allowFullScreen title="Video player" />
       </div>
       <div>
         <h4 id='selectedVidTitle'>{video.snippet.title}</h4>
         <p id='selectedVidDesc'>{video.snippet.description}</p>
       </div>
     </div>
-    </center>
+ 
+    </Container>
+   
     
   );
 };
