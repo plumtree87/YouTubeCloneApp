@@ -10,8 +10,11 @@ class App extends Component {
     state = { 
         selectedVideo: null,
         videos: [],
+        comments: []
      }
 
+
+     
 
 handleSubmit = async (userInputFromSearchBar) => {
     const response = await youtube.get('/search', {
@@ -26,6 +29,7 @@ handleSubmit = async (userInputFromSearchBar) => {
 };
 handleVideoSelect = (video) => {
     this.setState({selectedVideo: video})
+    console.log(video.id.videoId)
 }
 
     render() { 
@@ -38,6 +42,8 @@ handleVideoSelect = (video) => {
                 <Row>
                     <Col sm ={8}>
               <VideoPlayer video={this.state.selectedVideo}/>
+           
+             
                     </Col>
                     <Col sm = {4}>
               <VideoList handleVideoSelect={this.handleVideoSelect} videos={this.state.videos}/>
