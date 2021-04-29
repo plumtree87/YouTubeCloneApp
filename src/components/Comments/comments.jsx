@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, {Component} from 'react';
+import { Card, Container, Col, Row } from 'react-bootstrap';
 
 
 
@@ -22,7 +23,8 @@ class Comments extends Component {
     mapMatchedComments(){
         console.log(this.state.matchedComments)
         return this.state.matchedComments.map((comment) =>
-        <li>{comment}</li>
+        
+        <tr><Card>{comment}</Card></tr>
         )
     }
     
@@ -51,12 +53,14 @@ class Comments extends Component {
                 commentz.push(alldata[i].comment)
             }
         }
+    
         return commentz
 
     }
 
     async addNewComment(comment){
         await axios.post('http://127.0.0.1:8000/youtube/', comment)
+        this.mapComments();
 
 
     }
@@ -91,6 +95,7 @@ class Comments extends Component {
 
     render(){
         console.log(this.state.matchedComments)
+        this.mapComments()
         return (
             <div>
                 <hr />
