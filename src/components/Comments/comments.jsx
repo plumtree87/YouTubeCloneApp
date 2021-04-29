@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, {Component} from 'react';
 
 
+
 class Comments extends Component {
     if (props){
         console.log(props) }
@@ -10,23 +11,33 @@ class Comments extends Component {
         this.state = {
             video_id: '',
             comment: '',
-            like: ''
+            like: '',
+            matchedComments: []
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.mapComments();
-        
 
     }
-
+    mapMatchedComments(){
+        console.log(this.state.matchedComments)
+        return this.state.matchedComments.map((comment) =>
+        <li>{comment}</li>
+        )
+    }
+    
     async mapComments(){
         let response = await axios.get('http://127.0.0.1:8000/youtube/')
         let alldata = response.data.map(items =>{
             return items
         })
-        console.log(alldata)
-        let commentz = this.matchCommentToVideo(alldata)
+     
+        const commentz = this.matchCommentToVideo(alldata)
         console.log(commentz)
+        this.setState({
+            matchedComments: commentz
+        })
+        return commentz
 
 
     }
@@ -41,6 +52,7 @@ class Comments extends Component {
             }
         }
         return commentz
+
     }
 
     async addNewComment(comment){
@@ -74,9 +86,11 @@ class Comments extends Component {
         });
 
     }
-        
+
+    
 
     render(){
+        console.log(this.state.matchedComments)
         return (
             <div>
                 <hr />
@@ -97,6 +111,15 @@ class Comments extends Component {
                         </div>
                         <div className='col-md-4'>
                             <input type='submit' value='Add' />
+                        </div>
+                        <div>
+                        <div>
+                            <tbody><tr>
+                                <td> {this.mapMatchedComments()}</td>
+                                </tr>
+                            </tbody>
+                        </div>
+                           
                         </div>
                     </div>
                 </form>

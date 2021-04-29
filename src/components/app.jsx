@@ -49,6 +49,7 @@ handleVideoSelect = (video) => {
               <VideoList handleVideoSelect={this.handleVideoSelect} videos={this.state.videos}/>
                     </Col>
                 </Row>
+              
             </Container>
           );
     }
