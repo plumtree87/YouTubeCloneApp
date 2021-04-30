@@ -23,8 +23,9 @@ class Comments extends Component {
     mapMatchedComments(){
         console.log(this.state.matchedComments)
         return this.state.matchedComments.map((comment) =>
-        
-        <tr><Card>{comment}</Card></tr>
+        <Container>
+        <tr><Card>comment: "{comment.comment}" like: {comment.like}</Card></tr>
+        </Container>
         )
     }
     
@@ -36,9 +37,7 @@ class Comments extends Component {
      
         const commentz = this.matchCommentToVideo(alldata)
         console.log(commentz)
-        this.setState({
-            matchedComments: commentz
-        })
+
         return commentz
 
 
@@ -50,10 +49,12 @@ class Comments extends Component {
             console.log(this.props.video)
             if(this.props.video === alldata[i].video_id){
                 console.log(alldata[i].video_id)
-                commentz.push(alldata[i].comment)
+                commentz.push(alldata[i])
             }
         }
-    
+                this.setState({
+            matchedComments: commentz
+        })
         return commentz
 
     }
