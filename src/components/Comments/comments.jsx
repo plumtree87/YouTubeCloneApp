@@ -1,7 +1,9 @@
 import axios from 'axios';
 import React, {Component} from 'react';
-import { Card, Container, Col, Row } from 'react-bootstrap';
-import { AiTwotoneLike } from 'react-icons/ai';
+import { Card, Container, Col, Row, Accordian, Toggle, Button } from 'react-bootstrap';
+import { AiTwotoneLike, AiTwotoneDislike } from 'react-icons/ai';
+import CommentRender from './commentRender';
+import Accordion from 'react-bootstrap/Accordion'
 
 
 
@@ -15,7 +17,8 @@ class Comments extends Component {
             comment: '',
             like: '',
             matchedComments: [],
-            likes: 0
+            likes: 0,
+            dislikes: 0
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -23,14 +26,30 @@ class Comments extends Component {
      
     }
     displayLikes(){
-        return <Card>{this.state.likes}</Card>
+        return <div id='likeDislike'><div className="col-2"><Card id='like'><AiTwotoneLike/>{this.state.likes}</Card></div>
+                <div className="col-2"><Card id='dislike'><AiTwotoneDislike/>{this.state.dislikes}</Card></div></div>
     }
 
     mapMatchedComments(){
+        this.mapComments()
         return this.state.matchedComments.map((comment) =>
         <Container>
-        <tr><Card>comment: "{comment.comment}" like: {comment.like}</Card></tr>
+
+        <tr><Card id='commentCard'>"{comment.comment}" like: {comment.like}</Card></tr>
+        <Button>
+        <Accordion defaultActiveKey="0">
+            <Card>
+                <Accordion.Toggle as={Card.Header} eventKey="1">
+                Replies
+                </Accordion.Toggle>
+                <Accordion.Collapse eventKey="1">
+                <Card.Body>Replies Will go here</Card.Body>
+                </Accordion.Collapse>
+        </Card>
+        </Accordion>
+        </Button>
         </Container>
+       
         )
     }
     
@@ -41,6 +60,7 @@ class Comments extends Component {
         })
      
         const commentz = this.matchCommentToVideo(alldata)
+       
 
         return commentz
 
@@ -50,6 +70,7 @@ class Comments extends Component {
     matchCommentToVideo(alldata){
         let commentz = [];
         let theselikes = 0;
+        let thesedislikes = 0;
         for (let i = 0; i < alldata.length; i++){
    
             if(this.props.video === alldata[i].video_id){
@@ -57,13 +78,17 @@ class Comments extends Component {
                     theselikes += 1;
 
                 }
+                if(alldata[i].like === 0){
+                    thesedislikes += 1;
+                }
                 commentz.push(alldata[i])
             }
         }
  
         this.setState({
             matchedComments: commentz,
-            likes: theselikes
+            likes: theselikes,
+            dislikes: thesedislikes
         })
         return commentz
 
@@ -108,13 +133,13 @@ class Comments extends Component {
 
     render(){
       
-        this.mapComments()
+        
       
         return (
             <div>
                 <hr />
                 <center>
-                    <h3>{this.displayLikes()} <AiTwotoneLike/> </h3>
+                    <h3>{this.displayLikes()}  </h3>
                 </center>
                 <form onSubmit={this.handleSubmit}>
                     <div className='row col-align'>
@@ -124,7 +149,7 @@ class Comments extends Component {
                             onChange={this.handleChange} />
                         </div>
                         <div className='col-md-4'>
-                            <label>Like</label>
+                            <label>enter 1 for like, 0 for dislike</label>
                             <input type='text' name='like' value={this.state.like} onChange={this.handleChange}/>
                            
                         </div>

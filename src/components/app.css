@@ -18,3 +18,33 @@ div.content {
 #selectedVidTitle {
     width: 100%
 }
+
+#commentCard {
+    padding-bottom: 15px;
+    padding-top: 15px;
+    margin-bottom: 7px;
+    margin-top: 7px;
+}
+
+#like {
+    margin-left: -160px;
+    margin-right: 140px;
+}
+
+#dislike {
+    margin-left: -160px;
+    margin-right: 140px;
+}
+
+
+div.col {
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+div > .card-header {
+    background-color: black;
+    font: white;
+    margin-bottom: -12px;
+    margin-top: -12px;
+}
