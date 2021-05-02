@@ -25,7 +25,7 @@ handleSubmit = async (userInputFromSearchBar) => {
     this.setState({
         videos: response.data.items
     })
-    console.log("Response is", response);
+   
 };
 handleVideoSelect = (video) => {
     this.setState({selectedVideo: video})

@@ -8,8 +8,7 @@ const VideoPlayer = ({ video }) => {
     </div>;
   }
   const videoSrc = `https://www.youtube.com/embed/${video.id.videoId}`;
-  console.log(typeof video);
-  console.log(video.id.videoId)
+
   return (
     <Container>
     <div>

@@ -1,7 +1,7 @@
 import React from 'react';
 
 const CommentRender = (props) => {
-    console.log(props.comment)
+    console.log(props.comments)
     return (
         <div className="container">
             <div className="col">

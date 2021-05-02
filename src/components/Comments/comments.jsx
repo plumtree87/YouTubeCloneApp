@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, {Component} from 'react';
 import { Card, Container, Col, Row } from 'react-bootstrap';
+import { AiTwotoneLike } from 'react-icons/ai';
 
 
 
@@ -13,15 +14,19 @@ class Comments extends Component {
             video_id: '',
             comment: '',
             like: '',
-            matchedComments: []
+            matchedComments: [],
+            likes: 0
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.mapComments();
-
+     
     }
+    displayLikes(){
+        return <Card>{this.state.likes}</Card>
+    }
+
     mapMatchedComments(){
-        console.log(this.state.matchedComments)
         return this.state.matchedComments.map((comment) =>
         <Container>
         <tr><Card>comment: "{comment.comment}" like: {comment.like}</Card></tr>
@@ -36,7 +41,6 @@ class Comments extends Component {
         })
      
         const commentz = this.matchCommentToVideo(alldata)
-        console.log(commentz)
 
         return commentz
 
@@ -45,22 +49,30 @@ class Comments extends Component {
 
     matchCommentToVideo(alldata){
         let commentz = [];
+        let theselikes = 0;
         for (let i = 0; i < alldata.length; i++){
-            console.log(this.props.video)
+   
             if(this.props.video === alldata[i].video_id){
-                console.log(alldata[i].video_id)
+                if(alldata[i].like === 1){
+                    theselikes += 1;
+
+                }
                 commentz.push(alldata[i])
             }
         }
-                this.setState({
-            matchedComments: commentz
+ 
+        this.setState({
+            matchedComments: commentz,
+            likes: theselikes
         })
         return commentz
 
     }
 
     async addNewComment(comment){
+        console.log("ADD NEW COMMENT FUNCTION HERE")
         await axios.post('http://127.0.0.1:8000/youtube/', comment)
+        console.log(comment, "LINE 75 HEREEE")
         this.mapComments();
 
 
@@ -75,15 +87,15 @@ class Comments extends Component {
 
     handleSubmit(event) {
         event.preventDefault();
+        console.log("LINE 90 HEREEE")
 
         const Comment = {
             video_id: this.props.video,
             comment: this.state.comment,
             like: this.state.like
             }
-
+        console.log(Comment, "COMMENT HERE")
         this.addNewComment(Comment);
-        debugger;
         this.setState({
             video_id: this.props.video,
             comment: '',
@@ -95,13 +107,14 @@ class Comments extends Component {
     
 
     render(){
-        console.log(this.state.matchedComments)
+      
         this.mapComments()
+      
         return (
             <div>
                 <hr />
                 <center>
-                    <h3>comment</h3>
+                    <h3>{this.displayLikes()} <AiTwotoneLike/> </h3>
                 </center>
                 <form onSubmit={this.handleSubmit}>
                     <div className='row col-align'>
