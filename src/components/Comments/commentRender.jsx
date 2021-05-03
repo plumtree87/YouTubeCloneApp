@@ -3,8 +3,13 @@ import React from 'react';
 const CommentRender = (props) => {
     console.log(props.comment)
     return (
-        <div id="replyCommentScroll">
-        {props.comment.comment}
+        <div id="replyCommentScroll" className="scroll">
+       Reply to: {props.comment.comment} __
+        Original Comment ID: {props.comment.id} __
+
+     Using this Comment ID, we could have a model for replies that uses this as the foreign key, so that all replies for THIS commment could be rendered
+     This box would be scroll-y and have small edit/delete buttons on each reply-comment
+     This component (the one rendering this message) would probably need to have it's own state, for the replies that would be retrieved from axios.
 
 
         </div>

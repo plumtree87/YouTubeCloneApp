@@ -53,6 +53,8 @@ div > .card-body {
     height: 200px;
     padding-left: 0.25rem;
     padding-right: 0.25rem;
+    margin-top: -18px;
+    padding-bottom: 0.25rem;
 }
 
 div.collapse.show {
@@ -86,11 +88,30 @@ button.btn.btn.primary {
 
   #replyCommentScroll {
       background-color: black;
-      width: 400px;
-      height: 400px;
+      width: 100%;
+      height: 100%;
+      padding-right: 26px;
+      overflow-y: scroll;
+      overflow-x: auto;
   }
 
   #replyButton {
       border-color: black;
       background-color: rgba(0, 0, 0, 0.181);
+  }
+
+  #rateThis {
+    margin-left: 50px;
+    padding: 15px;
+  }
+
+  #commentAddButton {
+      margin-bottom: 15px;
+  }
+
+  .label {
+      margin-top: 5px;
+      margin-bottom: 5px;
+      margin-left: 5px;
+      margin-right: 5px;
   }

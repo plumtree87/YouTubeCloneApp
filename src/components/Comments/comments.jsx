@@ -45,12 +45,12 @@ class Comments extends Component {
                 </Accordion.Toggle>
                 <Accordion.Collapse eventKey="1">
                 <Card.Body>
-                <div className="scroll">
-             
+                
+                        
                          <CommentRender comment = {comment}/>
               
-                </div>
-  
+              
+            
                                 
                 </Card.Body>
                 </Accordion.Collapse>
@@ -158,12 +158,12 @@ class Comments extends Component {
                             <input type='text' name='comment' value={this.state.comment}
                             onChange={this.handleChange} />
                         </div>
-                        <div className='col-md-4'>
+                        <div className='col-md-4' id="rateThis">
                             <label>enter 1 for like, 0 for dislike</label>
                             <input type='text' name='like' value={this.state.like} onChange={this.handleChange}/>
                            
                         </div>
-                        <div className='col-md-4'>
+                        <div className='col-md-4' id="commentAddButton">
                             <input type='submit' value='Add' />
                         </div>
                         <div>
