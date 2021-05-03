@@ -1,9 +1,9 @@
 import axios from 'axios';
 import React, {Component} from 'react';
-import { Card, Container, Col, Row, Accordian, Toggle, Button } from 'react-bootstrap';
+import { Card, Container, Button } from 'react-bootstrap';
 import { AiTwotoneLike, AiTwotoneDislike } from 'react-icons/ai';
 import CommentRender from './commentRender';
-import Accordion from 'react-bootstrap/Accordion'
+import Accordion from 'react-bootstrap/Accordion';
 
 
 
@@ -33,22 +33,32 @@ class Comments extends Component {
     mapMatchedComments(){
         this.mapComments()
         return this.state.matchedComments.map((comment) =>
+        
         <Container>
 
         <tr><Card id='commentCard'>"{comment.comment}" like: {comment.like}</Card></tr>
-        <Button>
+        <Button id="replyButton">
         <Accordion defaultActiveKey="0">
             <Card>
                 <Accordion.Toggle as={Card.Header} eventKey="1">
                 Replies
                 </Accordion.Toggle>
                 <Accordion.Collapse eventKey="1">
-                <Card.Body>Replies Will go here</Card.Body>
+                <Card.Body>
+                <div className="scroll">
+             
+                         <CommentRender comment = {comment}/>
+              
+                </div>
+  
+                                
+                </Card.Body>
                 </Accordion.Collapse>
         </Card>
         </Accordion>
         </Button>
         </Container>
+    
        
         )
     }
@@ -157,8 +167,9 @@ class Comments extends Component {
                             <input type='submit' value='Add' />
                         </div>
                         <div>
-                        <div>
+                        <div className="scroll" id="replyScroll">
                             <tbody><tr>
+                               
                                 <td> {this.mapMatchedComments()}</td>
                                 </tr>
                             </tbody>

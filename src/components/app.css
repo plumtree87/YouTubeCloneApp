@@ -37,7 +37,7 @@ div.content {
 }
 
 
-div.col {
+div > .col {
     margin-bottom: 20px;
     margin-top: 20px;
 }
@@ -48,3 +48,49 @@ div > .card-header {
     margin-bottom: -12px;
     margin-top: -12px;
 }
+div > .card-body {
+    width: 400px;
+    height: 200px;
+    padding-left: 0.25rem;
+    padding-right: 0.25rem;
+}
+
+div.collapse.show {
+    background-color: white;
+}
+
+div.scroll {
+    background-color: white;
+    width: 100%;
+    height: auto;
+    overflow-x: auto;
+    overflow-y: scroll;
+    text-align: center;
+
+  }
+
+#replyScroll{
+    overflow-y: scroll;
+    height: 400px;
+    width: 500px;
+}
+
+button.btn.btn.primary {
+    background-color: rgba(0, 0, 0, 0);
+}
+
+  #replies {
+      color: black;
+      margin-bottom: -4rem;
+  }
+
+  #replyCommentScroll {
+      background-color: black;
+      width: 400px;
+      height: 400px;
+  }
+
+  #replyButton {
+      border-color: black;
+      background-color: rgba(0, 0, 0, 0.181);
+  }
